@@ -1,6 +1,7 @@
 package ru.job4j.calculator;
 
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -8,12 +9,12 @@ import static org.hamcrest.core.Is.is;
  * Class CalculateTest 3.1.
  * @author rzhedunov.
  * @since 2017-09-21.
- * @version 3.1.
+ * @version 3.2.
  */
 public class CalculatorTest {
     /**
      * Method whenAddOnePlusOneThenTwo tests Calculator.add method.
-      */
+     */
     @Test
     public void whenAddOnePlusOneThenTwo() {
         Calculator calc = new Calculator();
@@ -34,6 +35,7 @@ public class CalculatorTest {
         double expected = 0D;
         assertThat(result, is(expected));
     }
+
     /**
      * Method whenDivOneByOneThenOne tests Calculator.div method.
      */
@@ -44,6 +46,20 @@ public class CalculatorTest {
         double result = calc.getResult();
         double expected = 1D;
         assertThat(result, is(expected));
+    }
+
+    /**
+     * Method whenDivOneByZeroThenException tests Calculator.div method.
+     * Выпадение Exception (конкретно ArithmeticException) при делении на 0 является правильным поведением программы.
+     * Но java не дает исключения, может потому, что тип double?
+     * Прикрутил проверку значения calc.getResult() на бесконечность - правильно ли это?
+     */
+    @Test //(expected = Exception.class)
+    public void whenDivOneByZeroThenException() {
+        Calculator calc = new Calculator();
+        calc.div(1D, 0D);
+        //calc.div(1D, 1D); //При неравенстве второго аргумента нулю тест падает
+        assertEquals("divide float by zero should be infinity", true, Double.isInfinite(calc.getResult()));
     }
 
     /**
