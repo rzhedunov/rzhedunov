@@ -16,48 +16,40 @@ public class ItemTest {
     /**
      * Method whenAddTwoCommentsToNewItemThenShowsThem tests creation of new Item and adding Two Comments to it.
      */
-    @Test
+    @Test(expected = Exception.class)
     public void whenAddCommentsToNewItemThenShowsThem() throws  Exception {
         //Создать экземпляр Item, добавить два комментария, проверить, что их столо два
         //Добавить третий комментарий, проверить, что он доступен
-        //Удалить третий комментарий, проверить, что при попытке доступа возникает исключение
         Item item = new Item();
         item.addComment("FirstComment");
         item.addComment("SecondComment");
         assertThat(item.getCntComments(), is(2));
         item.addComment("ThirdComment");
-        try {
-            String expected = item.getComment(3);
-            assertThat(item.getComment(3), is(expected));
-        } catch (Exception e) {
-            //System.out.println(e.getMessage());
-        }
+        String expected = item.getComment(3);
+        assertThat(item.getComment(3), is(expected));
+    }
 
-        item.deleteComment(2);
-        Exception thrown = null;
-        try {
-            String expected = item.getComment(3);
-        } catch (Exception e) {
-            thrown = e;
-        }
-        assertNotNull(thrown);
+    /**
+     * Method whenRequestDeletedCommentThenThrowException tests throwing exception on requesting a deleted Comment.
+     */
+    @Test (expected = Exception.class)
+    public void whenRequestDeletedCommentThenThrowException() throws  Exception {
+        Item item = new Item();
+        item.addComment("FirstComment");
+        item.deleteComment(0);
+        String expected = item.getComment(0);
     }
 
     /**
      * Method whenAddMoreThanTenCommentsThenThrowException tests exception then adding eleventh comment.
      */
-    @Test
+    @Test(expected = Exception.class)
     public void whenAddMoreThanTenCommentsThenThrowException() throws  Exception {
         //При добавлении 11-го комментария, должно выпадать исключение
         Exception thrown = null;
-        try {
-            Item item = new Item();
-            for (int i = 0; i < 11; i++) {
-                item.addComment("" + (i - 1));
-            }
-        } catch (Exception e) {
-            thrown = e;
+        Item item = new Item();
+        for (int i = 0; i < 11; i++) {
+            item.addComment("" + (i - 1));
         }
-        assertNotNull(thrown);
     }
 }

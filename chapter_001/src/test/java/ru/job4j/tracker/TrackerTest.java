@@ -27,7 +27,7 @@ public class TrackerTest {
     /**
      * Method whenAddMoreThan100itemswhenThrowsException tests Tracker.add method.
      */
-    @Test
+    @Test(expected = Exception.class)
     public void whenAddMoreThan100itemswhenThrowsException() throws Exception {
         Tracker tracker = new Tracker();
         for (int i = 0; i < 100; i++) {
@@ -35,15 +35,8 @@ public class TrackerTest {
             tracker.add(item);
         }
         //При добавлении 101-го item, должно выпадать исключение
-        Exception thrown = null;
-        try {
-            Item item = new Item();
-            tracker.add(item);
-
-        } catch (Exception e) {
-            thrown = e;
-        }
-        assertNotNull(thrown);
+        Item item = new Item();
+        tracker.add(item);
     }
 
     /**
