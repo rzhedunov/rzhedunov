@@ -27,6 +27,15 @@ public class Item {
     }
 
     /**
+     * Конструктор с именем и описанием
+     */
+    Item(String name, String desc) {
+        this.name = name;
+        this.desc = desc;
+        this.created = created;
+    }
+
+    /**
      * Конструктор с именем, описанием, датой создания
      */
     Item(String name, String desc, long created) {
