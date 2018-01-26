@@ -4,10 +4,9 @@ package ru.job4j.tracker;
  * Class StartUI 002.1.1.
  * @author rzhedunov
  * @since 2017-12-21
- * @version 002.1.1.
+ * @version 002.4.3.
  */
 public class StartUI {
-
     /**
      * Константа меню для добавления новой заявки.
      */
