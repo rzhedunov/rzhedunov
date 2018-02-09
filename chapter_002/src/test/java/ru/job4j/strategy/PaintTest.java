@@ -1,32 +1,45 @@
 package ru.job4j.strategy;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.StringJoiner;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * Class PaintTest 002.4.4.
+ * Class PaintTest 002.4.5.
  * @author rzhedunov.
- * @since 2018-02-03.
- * @version 002.4.4.
+ * @since 2018-02-09.
+ * @version 002.4.5.
  */
 public class PaintTest {
+    // поле содержит дефолтный вывод в консоль.
+    private final PrintStream stdout = System.out;
+    // буфер для результата.
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+    @Before
+    public void loadOutput() {
+        System.out.println("before-method executed");
+        System.setOut(new PrintStream(this.out));
+    }
+
+    @After
+    public void backOutput() {
+        System.out.println("after-method executed ");
+        System.setOut(this.stdout);
+    }
+
+
     /**
      * Method whenDrawSquare tests drawing the square.
      */
     @Test
     public void whenDrawSquare() {
-        // получаем ссылку на стандартный вывод в консоль.
-        PrintStream stdout = System.out;
-        // Создаем буфер для хранения вывода.
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        //Заменяем стандартный вывод на вывод в пямять для тестирования.
-        System.setOut(new PrintStream(out));
-        // выполняем действия, пишушие в консоль.
         new Paint().draw(new Square());
-        // проверяем результат вычисления
         assertThat(
                 new String(out.toByteArray()),
                 is(
@@ -39,8 +52,6 @@ public class PaintTest {
                                 .toString()
                 )
         );
-        // возвращаем обратно стандартный вывод в консоль.
-        System.setOut(stdout);
     }
 
     /**
@@ -48,13 +59,6 @@ public class PaintTest {
     */
     @Test
     public void whenDrawTriangle() {
-        // получаем ссылку на стандартный вывод в консоль.
-        PrintStream stdout = System.out;
-        // Создаем буфер для хранения вывода.
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        //Заменяем стандартный вывод на вывод в пямять для тестирования.
-        System.setOut(new PrintStream(out));
-        // выполняем действия, пишушие в консоль.
         new Paint().draw(new Triangle());
         // проверяем результат вычисления
         assertThat(
@@ -69,7 +73,5 @@ public class PaintTest {
                                 .toString()
                 )
         );
-        // возвращаем обратно стандартный вывод в консоль.
-        System.setOut(stdout);
     }
 }
