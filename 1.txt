@@ -1,49 +1,49 @@
 [INFO] Scanning for projects...
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Build Order:
-[INFO] 
+[INFO]
 [INFO] rzhedunov
 [INFO] chapter_001
 [INFO] chapter_002
-[INFO] 
+[INFO]
 [INFO] ------------------------------------------------------------------------
 [INFO] Building rzhedunov 2.0
 [INFO] ------------------------------------------------------------------------
-[INFO] 
+[INFO]
 [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ rzhedunov ---
 [INFO] Deleting C:\Projects\rzhedunov\target
-[INFO] 
+[INFO]
 [INFO] --- maven-checkstyle-plugin:2.17:check (validate) @ rzhedunov ---
 [INFO] Starting audit...
 Audit done.
-[INFO] 
+[INFO]
 [INFO] ------------------------------------------------------------------------
 [INFO] Building chapter_001 2.0
 [INFO] ------------------------------------------------------------------------
-[INFO] 
+[INFO]
 [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ chapter_001 ---
 [INFO] Deleting C:\Projects\rzhedunov\chapter_001\target
-[INFO] 
+[INFO]
 [INFO] --- maven-checkstyle-plugin:2.17:check (validate) @ chapter_001 ---
 [INFO] Starting audit...
 Audit done.
-[INFO] 
+[INFO]
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ chapter_001 ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] skip non existing resourceDirectory C:\Projects\rzhedunov\chapter_001\src\main\resources
-[INFO] 
+[INFO]
 [INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ chapter_001 ---
 [INFO] Changes detected - recompiling the module!
 [INFO] Compiling 28 source files to C:\Projects\rzhedunov\chapter_001\target\classes
-[INFO] 
+[INFO]
 [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ chapter_001 ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] skip non existing resourceDirectory C:\Projects\rzhedunov\chapter_001\src\test\resources
-[INFO] 
+[INFO]
 [INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ chapter_001 ---
 [INFO] Changes detected - recompiling the module!
 [INFO] Compiling 25 source files to C:\Projects\rzhedunov\chapter_001\target\test-classes
-[INFO] 
+[INFO]
 [INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ chapter_001 ---
 [INFO] Surefire report directory: C:\Projects\rzhedunov\chapter_001\target\surefire-reports
 
@@ -91,34 +91,34 @@ Results :
 
 Tests run: 40, Failures: 0, Errors: 0, Skipped: 0
 
-[INFO] 
+[INFO]
 [INFO] ------------------------------------------------------------------------
 [INFO] Building chapter_002 1.0
 [INFO] ------------------------------------------------------------------------
-[INFO] 
+[INFO]
 [INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ chapter_002 ---
 [INFO] Deleting C:\Projects\rzhedunov\chapter_002\target
-[INFO] 
+[INFO]
 [INFO] --- maven-checkstyle-plugin:2.17:check (validate) @ chapter_002 ---
 [INFO] Starting audit...
 Audit done.
-[INFO] 
+[INFO]
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ chapter_002 ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] skip non existing resourceDirectory C:\Projects\rzhedunov\chapter_002\src\main\resources
-[INFO] 
+[INFO]
 [INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ chapter_002 ---
 [INFO] Changes detected - recompiling the module!
 [INFO] Compiling 16 source files to C:\Projects\rzhedunov\chapter_002\target\classes
-[INFO] 
+[INFO]
 [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ chapter_002 ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] skip non existing resourceDirectory C:\Projects\rzhedunov\chapter_002\src\test\resources
-[INFO] 
+[INFO]
 [INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ chapter_002 ---
 [INFO] Changes detected - recompiling the module!
 [INFO] Compiling 8 source files to C:\Projects\rzhedunov\chapter_002\target\test-classes
-[INFO] 
+[INFO]
 [INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ chapter_002 ---
 [INFO] Surefire report directory: C:\Projects\rzhedunov\chapter_002\target\surefire-reports
 
@@ -137,17 +137,17 @@ Running ru.job4j.tracker.ItemTest
 Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
 Running ru.job4j.tracker.StartUITest
 before-method executed
-after-method executed 
+after-method executed
 before-method executed
-after-method executed 
+after-method executed
 before-method executed
-after-method executed 
+after-method executed
 before-method executed
-after-method executed 
+after-method executed
 before-method executed
-after-method executed 
+after-method executed
 before-method executed
-after-method executed 
+after-method executed
 Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 sec
 Running ru.job4j.tracker.TrackerTest
 Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.079 sec
@@ -158,7 +158,7 @@ Tests run: 18, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary:
-[INFO] 
+[INFO]
 [INFO] rzhedunov .......................................... SUCCESS [  4.544 s]
 [INFO] chapter_001 ........................................ SUCCESS [ 10.824 s]
 [INFO] chapter_002 ........................................ SUCCESS [  5.949 s]
@@ -169,3 +169,4 @@ Tests run: 18, Failures: 0, Errors: 0, Skipped: 0
 [INFO] Finished at: 2018-03-01T19:38:41+03:00
 [INFO] Final Memory: 22M/244M
 [INFO] ------------------------------------------------------------------------
+ll
