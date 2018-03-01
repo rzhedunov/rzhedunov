@@ -237,10 +237,31 @@ public class MenuTracker {
         }
 
         public void execute(Input input, Tracker tracker) throws Exception {
+            System.exit(0);
         }
-
         public String info() {
             return String.format("%s. %s", this.key(), "Exit program. ");
         }
+    }
+
+    /**
+     * Метод генерации массива с номерами пунктов меню.
+     * returns int[]
+     */
+    public int[] appMenuNumbers() {
+        int numberOfNotNullPoints = 0;
+        for (int i = 0; i < this.actions.length; i++) {
+            if (this.actions[i] != null) {
+                numberOfNotNullPoints++;
+            }
+        }
+        int[] menuNumbers = new int[numberOfNotNullPoints];
+        numberOfNotNullPoints = 0;
+        for (int i = 0; i < this.actions.length; i++) {
+            if (this.actions[i] != null) {
+                menuNumbers[numberOfNotNullPoints++] = i;
+            }
+        }
+        return menuNumbers;
     }
 }

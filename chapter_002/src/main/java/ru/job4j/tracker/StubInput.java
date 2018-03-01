@@ -2,14 +2,23 @@ package ru.job4j.tracker;
 
 /**
  * Class StubInput 002.4.3.
+ *
  * @author rzhedunov
- * @since 2018-01-11
  * @version 002.4.3.
+ * @since 2018-01-11
  */
 public class StubInput implements Input {
-    /** A table of answers seria. */
+    /**
+     * A table of answers seria.
+     */
     private String[] answers;
-    /** Current answer's position. */
+    /**
+     * A table of answers numbers.
+     */
+    private int[] numberOfAnswers = {0, 1, 2, 3, 4, 5, 6};
+    /**
+     * Current answer's position.
+     */
     private int position = 0;
 
     /**
@@ -24,5 +33,12 @@ public class StubInput implements Input {
      */
     public String ask(String question) {
         return answers[position++];
+    }
+
+    /**
+     * The second method to retrieve the next answer from stub class (as an int)
+     */
+    public int ask(String question, int[] range) throws MenuOutException {
+        return Integer.valueOf(answers[position++]);
     }
 }

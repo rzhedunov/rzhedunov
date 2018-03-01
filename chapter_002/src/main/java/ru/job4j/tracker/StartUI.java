@@ -2,12 +2,15 @@ package ru.job4j.tracker;
 
 /**
  * Class StartUI 002.1.1.
+ *
  * @author rzhedunov
- * @since 2017-12-21
  * @version 002.4.3.
+ * @since 2017-12-21
  */
 public class StartUI {
-    /** Константа для выхода из цикла.   */
+    /**
+     * Константа для выхода из цикла.
+     */
     private static final String EXIT = "6";
 
     /**
@@ -21,7 +24,8 @@ public class StartUI {
 
     /**
      * Конструктор, инициализирующий поля.
-     * @param input ввод данных.
+     *
+     * @param input   ввод данных.
      * @param tracker хранилище заявок.
      */
     public StartUI(Input input, Tracker tracker) {
@@ -36,20 +40,17 @@ public class StartUI {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         menu.fillActions();
         do {
-             menu.show();
-             int key = Integer.valueOf(input.ask("Выберите пункт меню: "));
-             menu.select(key);
-             if (key == Integer.valueOf(EXIT)) {
-                 break;
-             }
-        } while (true);
+            menu.show();
+            menu.select(input.ask("Выберите пункт меню: ", menu.appMenuNumbers()));
+        } while (!"y".equals(this.input.ask("Выйти?")));
     }
 
     /**
      * Запуск программы.
+     *
      * @param args
      */
     public static void main(String[] args) throws Exception {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }

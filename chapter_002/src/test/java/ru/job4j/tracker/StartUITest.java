@@ -12,9 +12,10 @@ import static org.junit.Assert.assertThat;
 
 /**
  * Class StartUITest 022.4.3.
+ *
  * @author rzhedunov.
- * @since 2018-01-11.
  * @version 022.4.3.
+ * @since 2018-01-11.
  */
 
 public class StartUITest {
@@ -45,7 +46,7 @@ public class StartUITest {
      */
     @Test
     public void whenUserAddsItemThenTrackerHasNewItemWithSameName() throws Exception {
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "y"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
         assertThat(tracker.findAll()[1].getName(), is("test name")); // проверяем, что элемент массива с индексом 1 в трекере содержит имя, введённое при эмуляции.
     }
@@ -58,7 +59,7 @@ public class StartUITest {
         Item item = tracker.findAll()[0];
         //создаём StubInput с последовательностью действий
         //2 - пункт "изменить", item.getId() - id of existing item, then new values for item, then exit
-        Input input = new StubInput(new String[]{"2", item.getId(), "test name2", "desc2", "6"});
+        Input input = new StubInput(new String[]{"2", item.getId(), "test name2", "desc2", "y"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что нулевой элемент массива в трекере содержит измененное имя.
@@ -73,7 +74,7 @@ public class StartUITest {
         Item item = tracker.findAll()[0];
         //создаём StubInput с последовательностью действий
         //3 - пункт "удалить", item.getId() - id of existing item, then exit
-        Input input = new StubInput(new String[]{"3", item.getId(), "6"});
+        Input input = new StubInput(new String[]{"3", item.getId(), "y"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что массив Item в трекере не содержит элементов.
@@ -89,7 +90,7 @@ public class StartUITest {
 
         //создаём StubInput с последовательностью действий
         //4 - пункт "Найти по Id", item.getId() - id of existing item, then exit
-        Input input = new StubInput(new String[]{"4", item.getId(), "6"});
+        Input input = new StubInput(new String[]{"4", item.getId(), "y"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что массив Item в трекере не содержит элементов.
@@ -106,39 +107,12 @@ public class StartUITest {
 
         //создаём StubInput с последовательностью действий
         //5 - пункт "Найти по имени", item.getId() - id of existing item, then exit
-        Input input = new StubInput(new String[]{"4", item1.getId(), "6"});
+        //int menuActionsNumbers[] = {0, 1, 2, 3, 4, 5, 6};
+        Input input = new StubInput(new String[]{"4", item1.getId(), "y"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         // проверяем, что массив Items в трекере содержит две записи
         assertThat(tracker.getPosition(), is(2));
-    }
-
-    /**
-     * Method whenUserStartsProgramThenProgramShowsMenu tests displaying the menu.
-     */
-    @Test
-    public void whenUserStartsProgramThenProgramShowsMenu() throws Exception {
-
-        //создаём StubInput с единственным действием - выходом из программы
-        Input input = new StubInput(new String[]{"6"});
-        // создаём StartUI и вызываем метод init()
-        new StartUI(input, tracker).init();
-        String ls = System.lineSeparator(); //Разделитель строк для вывода
-        // проверяем, что консольный вывод содержит меню приложения.
-        assertThat(
-                new String(out.toByteArray()),
-                is(
-                        new StringBuilder()
-                                .append("0. Add the new item. ").append(ls)
-                                .append("1. Show all items. ").append(ls)
-                                .append("2. Edit item. ").append(ls)
-                                .append("3. Delete item. ").append(ls)
-                                .append("4. Find item by id. ").append(ls)
-                                .append("5. Find items by name. ").append(ls)
-                                .append("6. Exit program. ").append(ls)
-                                .toString()
-                )
-        );
     }
 
     /**
@@ -148,7 +122,7 @@ public class StartUITest {
     public void whenUserSearchesTheItemThenProgramShowsMenuAndTheItem() throws Exception {
 
         //создаём StubInput с единственным действием - выходом из программы
-        Input input = new StubInput(new String[]{"1", "6"});
+        Input input = new StubInput(new String[]{"1", "y"});
         // создаём StartUI и вызываем метод init()
         new StartUI(input, tracker).init();
         String numberOfTestItem = tracker.findAll()[0].getId();
@@ -166,20 +140,8 @@ public class StartUITest {
                                 .append("5. Find items by name. ").append(ls)
                                 .append("6. Exit program. ").append(ls)
                                 .append(numberOfTestItem + ". test name").append(ls)
-                                .append("0. Add the new item. ").append(ls)
-                                .append("1. Show all items. ").append(ls)
-                                .append("2. Edit item. ").append(ls)
-                                .append("3. Delete item. ").append(ls)
-                                .append("4. Find item by id. ").append(ls)
-                                .append("5. Find items by name. ").append(ls)
-                                .append("6. Exit program. ").append(ls)
                                 .toString()
                 )
         );
-
-
-
     }
-
-
 }
