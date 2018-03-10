@@ -7,19 +7,37 @@ package ru.job4j.tracker;
  * @version 002.6.1.
  * @since 2017-03-01
  */
-public class ValidateInput extends ConsoleInput {
+public class ValidateInput implements Input {
+
+    public final Input input;
+
+    public ValidateInput(Input input) {
+        this.input = input;
+    }
+
+    /**
+     * Метод запроса пункта меню с проверкой на соответствие (декоратор).
+     *
+     * @param question вопрос.
+     */
+    @Override
+    public String ask(String question) {
+        return this.input.ask(question);
+    }
+
     /**
      * Метод запроса пункта меню с проверкой на соответствие.
      *
      * @param question вопрос.
-     * @param range спектр ответов.
+     * @param range    спектр ответов.
      */
+
     public int ask(String question, int[] range) {
         boolean invalid = true;
         int value = -1;
         do {
             try {
-                value = super.ask(question, range);
+                value = this.input.ask(question, range);
                 invalid = false;
             } catch (MenuOutException moe) {
                 moe.printStackTrace();
@@ -27,8 +45,8 @@ public class ValidateInput extends ConsoleInput {
             } catch (NumberFormatException nfe) {
                 System.out.println("Пожалуйста, введите правильные данные!");
             }
-
         } while (invalid);
         return value;
     }
+
 }
