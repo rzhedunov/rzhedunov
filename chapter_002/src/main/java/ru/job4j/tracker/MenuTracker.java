@@ -2,15 +2,15 @@ package ru.job4j.tracker;
 
 /**
  * Class EditItem 002.4.6.
+ *
  * @author rzhedunov
  * @version 002.4.6.
  * @since 2018-02-22
  */
 // "Внешний" класс
-class EditItems implements UserAction {
-    //@Override
-    public int key() {
-        return 2;
+class EditItems extends BaseAction {
+    public EditItems() {
+        super(2, "Edit item. ");
     }
 
     //Редактирование заявки осуществляю без замены объекта Item
@@ -27,14 +27,11 @@ class EditItems implements UserAction {
         }
     }
 
-    //@Override
-    public String info() {
-        return String.format("%s. %s", this.key(), "Edit item. ");
-    }
 }
 
 /**
  * Class MenuTracker 002.4.6.
+ *
  * @author rzhedunov
  * @version 002.4.6.
  * @since 2018-02-22
@@ -55,6 +52,7 @@ public class MenuTracker {
 
     /**
      * Конструктор, инициализирующий поля.
+     *
      * @param input   ввод данных.
      * @param tracker хранилище заявок.
      */
@@ -97,13 +95,14 @@ public class MenuTracker {
 
     /**
      * Class MenuTracker.AddItem 002.4.6.
+     *
      * @author rzhedunov
      * @version 002.4.6.
      * @since 2018-02-22
      */
-    private class AddItem implements UserAction {
-        public int key() {
-            return 0;
+    private class AddItem extends BaseAction {
+        public AddItem() {
+            super(0, "Add the new item. ");
         }
 
         public void execute(Input input, Tracker tracker) throws Exception {
@@ -111,20 +110,19 @@ public class MenuTracker {
             String desc = input.ask("Enter the item description: ");
             tracker.add(new Item(name, desc));
         }
-        public String info() {
-            return String.format("%s. %s", this.key(), "Add the new item. ");
-        }
+
     }
 
     /**
      * Class MenuTracker.ShowItems 002.4.6.
+     *
      * @author rzhedunov
      * @version 002.4.6.
      * @since 2018-02-22
      */
-    private static class ShowItems implements UserAction {
-        public int key() {
-            return 1;
+    private static class ShowItems extends BaseAction {
+        public ShowItems() {
+            super(1, "Show all items. ");
         }
 
         public void execute(Input input, Tracker tracker) throws Exception {
@@ -134,21 +132,18 @@ public class MenuTracker {
                 );
             }
         }
-
-        public String info() {
-            return String.format("%s. %s", this.key(), "Show all items. ");
-        }
     }
 
     /**
      * Class MenuTracker.DeleteItem 002.4.6.
+     *
      * @author rzhedunov
      * @version 002.4.6.
      * @since 2018-02-22
      */
-    private static class DeleteItem implements UserAction {
-        public int key() {
-            return 3;
+    private static class DeleteItem extends BaseAction {
+        public DeleteItem() {
+            super(3, "Delete item. ");
         }
 
         public void execute(Input input, Tracker tracker) throws Exception {
@@ -159,24 +154,19 @@ public class MenuTracker {
             } else {
                 System.out.println("The item with this id was not found!");
             }
-
-        }
-
-        public String info() {
-            return String.format("%s. %s", this.key(), "Delete item. ");
         }
     }
 
     /**
      * Class MenuTracker.FindItemById 002.4.6.
+     *
      * @author rzhedunov
      * @version 002.4.6.
      * @since 2018-02-22
      */
-    private static class FindItemById implements UserAction {
-        //@Override
-        public int key() {
-            return 4;
+    private static class FindItemById extends BaseAction {
+        public FindItemById() {
+            super(4, "Find item by id. ");
         }
 
         public void execute(Input input, Tracker tracker) throws Exception {
@@ -189,22 +179,18 @@ public class MenuTracker {
             }
 
         }
-
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find item by id. ");
-        }
     }
 
     /**
      * Class MenuTracker.FindItemsByName 002.4.6.
+     *
      * @author rzhedunov
      * @version 002.4.6.
      * @since 2018-02-22
      */
-    private static class FindItemsByName implements UserAction {
-        //@Override
-        public int key() {
-            return 5;
+    private static class FindItemsByName extends BaseAction {
+        public FindItemsByName() {
+            super(5, "Find items by name. ");
         }
 
         public void execute(Input input, Tracker tracker) throws Exception {
@@ -218,29 +204,22 @@ public class MenuTracker {
                 System.out.println("Items were not found!");
             }
         }
-
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find items by name. ");
-        }
     }
 
     /**
      * Class MenuTracker.ExitProgram 002.4.6.
+     *
      * @author rzhedunov
      * @version 002.4.6.
      * @since 2018-02-22
      */
-    private static class ExitProgram implements UserAction {
-        //@Override
-        public int key() {
-            return 6;
+    private static class ExitProgram extends BaseAction {
+        public ExitProgram() {
+            super(6, "Exit program. ");
         }
 
         public void execute(Input input, Tracker tracker) throws Exception {
             System.exit(0);
-        }
-        public String info() {
-            return String.format("%s. %s", this.key(), "Exit program. ");
         }
     }
 
